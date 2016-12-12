@@ -417,7 +417,7 @@
           msIds = $.map(value, function(val){ return(that.sanitize(val)); }),
           selectables = this.$selectableUl.find('#' + msIds.join('-selectable, #')+'-selectable'),
           selections = this.$selectionUl.find('#' + msIds.join('-selection, #')+'-selection').filter('.ms-selected').filter(':not(.'+that.options.disabledClass+')'),
-          options = ms.find('option').filter(function(){ return($.inArray(this.value, value) > -1); });
+          options = ms.find('option:not(":disabled")').filter(function(){ return($.inArray(this.value, value) > -1); });
 
       if (selections.length > 0){
         selectables.removeClass('ms-selected').show();
@@ -473,7 +473,7 @@
       var ms = this.$element,
           values = ms.val();
 
-      ms.find('option').prop('selected', false);
+      ms.find('option:not(":disabled")').prop('selected', false);
       this.$selectableUl.find('.ms-elem-selectable').removeClass('ms-selected').show();
       this.$selectionUl.find('.ms-optgroup-label').hide();
       this.$selectableUl.find('.ms-optgroup-label').show();
