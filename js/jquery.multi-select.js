@@ -474,10 +474,10 @@
           values = ms.val();
 
       ms.find('option:not(":disabled")').prop('selected', false);
-      this.$selectableUl.find('.ms-elem-selectable').removeClass('ms-selected').show();
+      this.$selectableUl.find('.ms-elem-selectable').filter(':not(.'+this.options.disabledClass+')').removeClass('ms-selected').show();
       this.$selectionUl.find('.ms-optgroup-label').hide();
       this.$selectableUl.find('.ms-optgroup-label').show();
-      this.$selectionUl.find('.ms-elem-selection').removeClass('ms-selected').hide();
+      this.$selectionUl.find('.ms-elem-selection').filter(':not(.'+this.options.disabledClass+')').removeClass('ms-selected').hide();
       this.$selectableUl.focus();
       ms.trigger('change');
       if (typeof this.options.afterDeselect === 'function') {
